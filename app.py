@@ -1,7 +1,15 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
+from flask_sqlalchemy import SQLAlchemy
+from models import User
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'
+
+app.config.from_object('config.Config')
+
+db = SQLAlchemy(app)
+@app.before_first_request
+def create_tables():
+    db.create_all()
 
 @app.route('/')
 def index():
