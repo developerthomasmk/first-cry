@@ -52,7 +52,7 @@
 .navbar ul li a:hover:after{
     width: 100px;
 }
-.content{
+/* .content{
     width: 100px;
     position: absolute;
     top: 50px;
@@ -91,7 +91,11 @@
     font-size: 55px;
     text-align: center;
     margin-top: 35px;
-}
+} */
+
+
+
+
 footer{
     background-color: wheat;
     color: black;
@@ -171,4 +175,58 @@ a{
     margin: 0;
     font-size: 16px;
     padding: 7px;
+}
+.product-text{
+    /* padding-top: 10rem;
+    padding-bottom: 10rem; */
+    text-align: center;
+    color: black;
+    background-color: bisque;
+}
+.product-text h2{
+    font-size: 40px;
+}
+.product-content{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px,auto));
+    gap: 2rem;
+    align-items: center;
+    color: black;
+    margin-top: 1rem;
+    background-color: bisque;
+}
+.row{
+    position: relative;
+    transition:all .35s ease;
+    margin-top: 3rem;
+    gap: 2rem;
+    padding-bottom: 3rem;
+}
+.row img{
+    width: 100%;
+    height: auto;
+}
+.descriprion{
+    position: absolute;
+    left: 120px;
+    color: white;
+}
+.descriprion h5{
+    font-size: 19px;
+}
+.row.details{
+    position: absolute;
+    left: 375px;
+}
+.row.detailsi{
+    height: 35px;
+    width: 35px;
+    background: var(--bg-color);
+    border-radius: 50%;
+    font-size: 20px;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .35s ease;
 }
