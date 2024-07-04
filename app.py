@@ -3,10 +3,10 @@ from flask_sqlalchemy import SQLAlchemy
 from models import User
 
 app = Flask(__name__)
-
 app.config.from_object('config.Config')
 
 db = SQLAlchemy(app)
+
 @app.before_first_request
 def create_tables():
     db.create_all()
@@ -21,14 +21,17 @@ def login():
         username = request.form['username']
         password = request.form['password']
         
-        if username == "" or password == "":
-            flash("Please fill in all fields.")
-        elif username == "admin" and password == "password":
-            flash("Login successful!", "success")
+        if not username or not password:
+            flash("Please fill in all fields.", "warning")
         else:
-            flash("Invalid username or password.", "danger")
+            user = User.query.filter_by(username=username).first()
+            if user and user.verify_password(password):
+                flash("Login successful!", "success")
+            else:
+                flash("Invalid username or password.", "danger")
 
-    return render_template('./login.html')
+    return render_template('login.html')
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -41,7 +44,6 @@ def register():
         elif password != confirm_password:
             flash("Passwords do not match.", "danger")
         else:
-            # Check if the user already exists
             user = User.query.filter_by(username=username).first()
             if user:
                 flash("Username already exists.", "danger")
@@ -56,4 +58,3 @@ def register():
 
 if __name__ == '__main__':
     app.run(debug=True)
- 
