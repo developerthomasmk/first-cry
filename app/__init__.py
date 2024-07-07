@@ -10,7 +10,7 @@ def create_app():
     db.init_app(app)
 
     with app.app_context():
-        from login import bp as login_bp
+        from app.login import bp as login_bp
 
         app.register_blueprint(login_bp)
 
