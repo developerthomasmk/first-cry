@@ -1,0 +1,145 @@
+/* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+} */
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3505f3;
+    padding: 30px 50px;
+    color: white;
+}
+
+.logo {
+    font-size: 2.5em;
+}
+
+
+
+.product-item {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 400px;
+    text-align: center;
+    padding: 10px;
+}
+
+.product-item img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.product-item h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.product-item .price {
+    color: #e67e22;
+    font-size: 1.1em;
+    margin: 10px 0;
+}
+
+.product-item .description {
+    font-size: 0.9em;
+    color: #666;
+    margin: 10px 0;
+}
+
+.product-item .add-to-cart {
+    background-color: #e67e22;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.product-item .add-to-cart:hover {
+    background-color: #d35400;
+}
+
+.product-detail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-images {
+    flex: 1;
+    min-width: 300px;
+}
+
+.product-images .main-image {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.thumbnail-images {
+    display: flex;
+    gap: 10px;
+}
+
+.thumbnail-images img {
+    width: 100px;
+    height: auto;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.product-info {
+    flex: 2;
+    min-width: 300px;
+}
+
+.product-info h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.product-info .price {
+    color: #e67e22;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.product-info .description {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.product-info .add-to-cart {
+    background-color: #e67e22;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.product-info .add-to-cart:hover {
+    background-color: #d35400;
+}
