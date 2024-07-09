@@ -11,8 +11,10 @@ def create_app():
 
     with app.app_context():
         from app.login import bp as login_bp
+        from app.home import bp as home_bp
 
-        app.register_blueprint(login_bp)
+        app.register_blueprint(login_bp, url_prefix='/login')
+        app.register_blueprint(home_bp)
 
         db.create_all()
 

@@ -2,4 +2,4 @@ from flask import Blueprint
 
 bp = Blueprint('login', __name__, template_folder="templates")
 
-from app.login import views
+from app.login import routs
