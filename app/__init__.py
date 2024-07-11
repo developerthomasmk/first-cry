@@ -14,8 +14,8 @@ def create_app():
         from app.home import bp as home_bp
 
         app.register_blueprint(login_bp, url_prefix='/login')
-        app.register_blueprint(home_bp)
+        app.register_blueprint(home_bp, url_prefix='/home')
 
-        db.create_all()
+        # db.create_all()
 
     return app

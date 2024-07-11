@@ -3,4 +3,4 @@ from app.home import bp
 
 @bp.route('/')
 def index():
-    return render_template(url_for('home.html'))
+    return render_template('home.html')
