@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
@@ -5,6 +6,7 @@ db = SQLAlchemy()
 
 def create_app():
     app = Flask(__name__)
+    app.secret_key = os.urandom(24)
     app.config.from_object('config.Config')
 
     db.init_app(app)
@@ -16,6 +18,6 @@ def create_app():
         app.register_blueprint(login_bp, url_prefix='/login')
         app.register_blueprint(home_bp, url_prefix='/home')
 
-        # db.create_all()
+        db.create_all()
 
     return app

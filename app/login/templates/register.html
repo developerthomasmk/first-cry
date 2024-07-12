@@ -7,22 +7,58 @@
     <link rel="stylesheet" href="{{url_for('login.static', filename='css/style.css')}}">
 </head>
 <body>
+    <div class="heading-container">
+        <h1>Register</h1>
+    </div>
     <div class="register-container">
-        <h2>Register</h2>
-        <form method="post" action="{{ url_for('login.register') }}" id="registerForm">
-            <div class="input-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
+        <h2>Create an Account</h2>
+        <div method="post" action="{{ url_for('login.register') }}" id="registerForm">
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="firstname">First Name</label>
+                    <input type="text" id="firstname" name="firstname" required>
+                </div>
+                <div class="input-group">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" id="lastname" name="lastname" required>
+                </div>
             </div>
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="mobile">Mobile</label>
+                    <input type="tel" id="mobile" name="mobile" required>
+                </div>
             </div>
-            <div class="input-group">
-                <label for="confirm_password">Confirm Password</label>
-                <input type="password" id="confirm_password" name="confirm_password" required>
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="address_line1">Address Line 1</label>
+                    <input type="text" id="address_line1" name="address_line1" required>
+                </div>
+                <div class="input-group">
+                    <label for="address_line2">Address Line 2</label>
+                    <input type="text" id="address_line2" name="address_line2">
+                </div>
             </div>
-            <button type="submit">Register</button>
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+            </div>
+                <div class="input-group">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input type="password" id="confirm_password" name="confirm_password" required>
+                </div>
+                <button type="submit">Register</button>
+            </div>
         </form>
         {% with messages = get_flashed_messages(with_categories=true) %}
           {% if messages %}
