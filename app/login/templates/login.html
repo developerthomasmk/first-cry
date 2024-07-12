@@ -23,7 +23,7 @@
             </div>
             <button type="submit">Login</button>
             <div class="signup-link"></div>
-            <p>Don't have an account? <a href="">Sign Up</a></p>
+            <p>Don't have an account? <a href="{{url_for('login.go_to_register')}}">Sign Up</a></p>
             </div>
         </form>
         {% with messages = get_flashed_messages(with_categories=true) %}

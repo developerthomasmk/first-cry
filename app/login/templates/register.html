@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Page</title>
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="{{url_for('login.static', filename='css/style.css')}}">
 </head>
 <body>
     <div class="register-container">
         <h2>Register</h2>
-        <form method="post" action="{{ url_for('register') }}" id="registerForm">
+        <form method="post" action="{{ url_for('login.register') }}" id="registerForm">
             <div class="input-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" required>
@@ -34,6 +34,6 @@
           {% endif %}
         {% endwith %}
     </div>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('login.static', filename='js/script.js') }}"></script>
 </body>
 </html>
