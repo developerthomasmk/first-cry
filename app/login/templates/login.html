@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="{{url_for('login.static', filename='css/style.css')}}">
 </head>
 <body>
+  <div class="heading-container">
+    <h1>First Cry</h1>
+  </div>
     <div class="login-container">
         <h2>Login</h2>
         <form method="post" action="{{url_for('login.login')}}" id="loginForm">
@@ -19,6 +22,9 @@
                 <input type="password" id="password" name="password" required>
             </div>
             <button type="submit">Login</button>
+            <div class="signup-link"></div>
+            <p>Don't have an account? <a href="">Sign Up</a></p>
+            </div>
         </form>
         {% with messages = get_flashed_messages(with_categories=true) %}
           {% if messages %}

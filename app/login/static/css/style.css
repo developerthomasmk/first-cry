@@ -1,64 +1,111 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #109dbd; 
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
-    margin: 0;
+    min-height: 100vh;
+}
+.heading-container {
+    width: 100%;
+    text-align: center; 
+    margin-bottom: 30px; 
+}
+
+.heading-container h1 {
+    font-size: 3em; 
+    color: white; 
+    font-weight: bold; 
+    margin: 0; 
 }
 
 .login-container {
-    background-color: #fff;
-    padding: 20px;
+    width: 90%; 
+    max-width: 450px; 
+    padding: 30px; 
+    background-color: #ffffff; 
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); 
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
     text-align: center;
 }
 
 h2 {
-    margin-bottom: 20px;
+    font-size: 1.8em; 
+    color: black; 
+    margin-bottom: 25px;
 }
 
 .input-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     text-align: left;
 }
 
 .input-group label {
     display: block;
-    margin-bottom: 5px;
+    font-weight: bold;
+    margin-bottom: 8px; 
+    color: #101010; 
 }
 
 .input-group input {
     width: 100%;
-    padding: 8px;
+    padding: 15px; 
+    border: 1px solid #919191; 
+    border-radius: 5px;
     box-sizing: border-box;
+    font-size: 1.1em;
 }
 
 button {
     width: 100%;
-    padding: 10px;
+    padding: 15px;
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 5px;
+    font-size: 1.1em; 
     cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
 }
 
 button:hover {
     background-color: #0056b3;
 }
+.signup-link {
+    margin-top: 20px; 
+}
+
+.signup-link p {
+    font-size: 1em; 
+    color: #101010; 
+}
+
+.signup-link a {
+    color: #db4566; 
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup-link a:hover {
+    text-decoration: underline; 
+}
 
 #message {
-    margin-top: 15px;
+    margin-top: 20px;
 }
-
-.success {
-    color: green;
+#message p.error {
+    background-color: #f8d7da; 
+    color: #721c24; 
+    padding: 10px;
+    border-radius: 5px;
 }
-
-.danger {
-    color: red;
+#message p.success {
+    background-color: #d4edda; 
+    color: #155724; 
+    padding: 10px;
+    border-radius: 5px;
 }
