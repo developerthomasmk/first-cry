@@ -1,12 +1,13 @@
-from flask import request, render_template, redirect, url_for, flash
+from flask import request, render_template, redirect, url_for, flash, jsonify
 from app.login import bp
 from app.models import User as logindb
+from app import db
 
-@bp.route('/')
-def index():
-    return redirect(url_for('login.login'))
+# @bp.route('/')
+# def index():
+#     return redirect(url_for('login'))
 
-@bp.route('/login', methods=['GET', 'POST'])
+@bp.route('/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         user_name = request.form['username']
@@ -25,30 +26,43 @@ def login():
 
     return render_template('login.html')
 
-@bp.route('/register')
-def go_to_register():
-    return render_template('register.html')
+# @bp.route('/register')
+# def go_to_register():
+#     return redirect(url_for('login.register'))
 
-@bp.route('/register', methods=['GET', 'POST'])
-def register():
+@bp.route('/api/add_user', methods=['POST'])
+def addUser():
     if request.method == 'POST':
         user_name = request.form['username']
         password = request.form['password']
         conf_password = request.form['confirm_password']
         if password == conf_password:
-            record = logindb()
+            record = logindb(username="ddsk", 
+                             password="dkas", 
+                             mobile="383478632", 
+                             email="dsdsj@shjjs.com", 
+                             firstname="ahjdsd", 
+                             lastname="jhcdhjs", 
+                             address_line1="avcvds", 
+                             address_line2="hcjsd", 
+                             is_admin=False
+                             )
+            
+            try:
+                db.session.add(record)
+                db.session.commit()
+                return jsonify({'success': True, 'username': user_name}), 200
+            except Exception as e:
+                db.session.rollback()
+                return jsonify({'success': False, 'error': str(e)}), 500
+            finally:
+                db.session.close()
 
 
-        singleUser = logindb.query.filter_by(username=user_name).first()
-        print(singleUser)
-        if singleUser == None:
-            flash("No username assosiated found!!", "danger")
-        else:          
-            if user_name == "" or password == "":
-                flash("Please fill in all fields.")
-            elif password == singleUser.password:
-                return redirect(url_for('home'))
-            else:
-                flash("Invalid username or password.", "danger")
+@bp.route('/register')
+def register():
+    return render_template('register.html')
 
-    return render_template('login.html')
+@bp.route('/home')
+def go_to_home():
+    return redirect(url_for('home.index'))
