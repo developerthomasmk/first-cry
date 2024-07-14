@@ -41,31 +41,18 @@
               <a class="nav-link" href="home.html">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="productsale.html">
+              <a class="nav-link" href="{{url_for('home.go_to_sell')}}">
                 PRODUCT SALE
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="productstatus.html">
+              <a class="nav-link" href="{{url_for('home.go_to_history')}}">
                 PRODUCT STATUS
               </a>
             </li>
           </ul>
-          <div class="user_option">
-            <a href="">
-              <i class="fa fa-user" aria-hidden="true"></i>
-              <span>
-                Login
-              </span>
-            </a>
-            <!-- <a href="">
-              <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-            </a> -->
-            <form class="form-inline ">
-              <button class="btn nav_search-btn" type="submit">
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </button>
-            </form>
+          <div class="user_option" id="login_container">
+            
           </div>
         </div>
       </nav>
@@ -116,173 +103,14 @@
           Products
         </h2>
       </div>
-      <div class="row">
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="{{url_for('home.static', filename='images/p1.png')}}" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  robot 
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    €80
-                  </span>
-                </h6>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="{{url_for('home.static', filename='images/p2.png')}}" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  remote car 
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    € 20
-                  </span>
-                </h6>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="{{url_for('home.static', filename='images/p3.png')}}" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Teddy Bear
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    €110
-                  </span>
-                </h6>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="{{url_for('home.static', filename='images/p4.png')}}" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  dancing doll
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    €45
-                  </span>
-                </h6>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="{{url_for('home.static', filename='images/p5.png')}}" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Teddy Bear
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    €95
-                  </span>
-                </h6>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="{{url_for('home.static', filename='images/p6.png')}}" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Puzzles
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    €60
-                  </span>
-                </h6>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="{{url_for('home.static', filename='images/p7.png')}}" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Building Blocks
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    €110
-                  </span>
-                </h6>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="{{url_for('home.static', filename='images/p8.png')}}" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Toy Kitchen set
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    €160
-                  </span>
-                </h6>
-              </div>
-            </a>
-          </div>
-        </div>
+      <div class="row" id="home_container">
+        
       </div>
-      <div class="btn-box">
+      <!-- <div class="btn-box">
         <a href="">
           View All Products
         </a>
-      </div>
+      </div> -->
     </div>
   </section>
 
@@ -411,6 +239,13 @@
 
   <!-- end info section -->
 
+  <script>
+    const getDataUrl = "{{url_for('home.getProducts')}}"
+    const getLoginUrl = "{{url_for('home.go_to_login')}}"
+    const productImageUrl = "{{ url_for('download_file', filename='') }}";
+    const hasSessionUrl = "{{ url_for('home.hasSession') }}";
+  </script>
+  <script src="{{ url_for('home.static', filename='js/script.js') }}"></script>
 
   <!-- <script src="{{url_for('home.static', filename='js/jquery-3.4.1.min.js')}}"></script> -->
   <!-- <script src="{{url_for('home.static', filename='js/bootstrap.js')}}"></script> -->
