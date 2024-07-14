@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <!-- <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon"> -->
+
+  <title>
+    Admin
+  </title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{{url_for('admin.static', filename='css/bootstrap-admin.css')}}" />
+
+  <!-- Custom styles for this template -->
+  <link href="{{url_for('admin.static', filename='css/admin.css')}}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{{url_for('admin.static', filename='css/responsive-admin.css')}}" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <nav class="navbar navbar-expand-lg custom_nav-container ">
+        <a class="navbar-brand" href="home.html">
+          <span>
+            FIRST CRY
+          </span>
+        </a>
+    </header>
+
+    <div class="row justify-content-center mb-3" id="admin_container">
+
+
+
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <script>
+    const getDataUrl = "{{url_for('admin.getAllProducts')}}"
+    const productImageUrl = "{{ url_for('download_file', filename='') }}";
+  </script>
+  <script src="{{ url_for('admin.static', filename='js/script.js') }}"></script>
+</body>
+
+</html>

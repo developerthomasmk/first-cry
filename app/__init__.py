@@ -28,11 +28,13 @@ def create_app():
         from app.home import bp as home_bp
         from app.history import bp as history_bp
         from app.sell_product import bp as sell_bp
+        from app.admin import bp as admin_bp
 
-        app.register_blueprint(login_bp, url_prefix='/login')
         app.register_blueprint(home_bp, url_prefix='/home')
+        app.register_blueprint(login_bp, url_prefix='/login')
         app.register_blueprint(history_bp, url_prefix='/history')
         app.register_blueprint(sell_bp, url_prefix='/sell_product')
+        app.register_blueprint(admin_bp, url_prefix='/admin')
 
         db.create_all()
         
