@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Selling Page</title>
+    <link rel="stylesheet" href="{{ url_for('sell_product.static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Sell Your Product</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <form id="product-form" action="{{url_for('sell_product.addProduct')}}" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="product-name">Product Name:</label>
+                <input type="text" id="product-name" name="product-name" required>
+            </div>
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <select id="category" name="category" required>
+                    <option value="">Select Category</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="fashion">Fashion</option>
+                    <option value="home">Home</option>
+                    <option value="beauty">Beauty</option>
+                    <option value="sports">Sports</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="year-of-purchase">Year of Purchase</label>
+                <input type="text" id="year-of-purchase" name="year-of-purchase" placeholder="Enter Year of Purchase">
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="text" id="price" name="price" placeholder="Enter Price">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" placeholder="Enter Description" rows="5"></textarea>
+            </div>
+            <!-- <div class="form-group">
+                <label for="seller-name">Seller Name:</label>
+                <input type="text" id="seller-name" name="seller-name" required>
+            </div>
+            <div class="form-group">
+                <label for="seller-email">Seller Email:</label>
+                <input type="email" id="seller-email" name="seller-email" required>
+            </div> -->
+            <div class="form-group">
+                <label for="product-images">Product Images:</label>
+                <input type="file" id="product-images" name="product-images" multiple accept="image/*">
+            </div>
+            <button type="submit" class="add-product-btn">Add Product</button>
+
+        </form>
+    </div>
+    <script src="{{ url_for('sell_product.static', filename='js/script.js') }}"></script>
+</body>
+</html>
