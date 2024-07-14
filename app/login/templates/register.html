@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Page</title>
-    <link rel="stylesheet" href="{{url_for('login.static', filename='css/style.css')}}">
+    <link rel="stylesheet" href="{{ url_for('login.static', filename='css/style.css') }}">
 </head>
 <body>
     <div class="heading-container">
@@ -12,7 +12,7 @@
     </div>
     <div class="register-container">
         <h2>Create an Account</h2>
-        <div method="post" action="{{ url_for('login.register') }}" id="registerForm">
+        <form method="post" action="{{ url_for('login.register') }}" id="registerForm">
             <div class="input-row">
                 <div class="input-group">
                     <label for="firstname">First Name</label>
@@ -53,23 +53,26 @@
                     <input type="password" id="password" name="password" required>
                 </div>
             </div>
-                <div class="input-group">
-                    <label for="confirm_password">Confirm Password</label>
-                    <input type="password" id="confirm_password" name="confirm_password" required>
-                </div>
-                <button type="submit" id="register_btn" onclick="addUser()">Register</button>
+            <div class="input-group">
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>
             </div>
+            <button type="submit" id="register_btn">Register</button>
         </form>
         {% with messages = get_flashed_messages(with_categories=true) %}
-          {% if messages %}
-            <div id="message">
-            {% for category, message in messages %}
-              <p class="{{ category }}">{{ message }}</p>
-            {% endfor %}
-            </div>
-          {% endif %}
+            {% if messages %}
+                <div id="message">
+                    {% for category, message in messages %}
+                        <p class="{{ category }}">{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
         {% endwith %}
     </div>
+    <script>
+        const postDataUrl = "{{ url_for('login.addUser') }}";
+        const goToLogin = "{{ url_for('login.login') }}"
+    </script>
     <script src="{{ url_for('login.static', filename='js/script.js') }}"></script>
 </body>
 </html>
