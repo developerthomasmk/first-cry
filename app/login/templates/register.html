@@ -57,7 +57,7 @@
                     <label for="confirm_password">Confirm Password</label>
                     <input type="password" id="confirm_password" name="confirm_password" required>
                 </div>
-                <button type="submit" id="register_btn" onclick="addUser()">Register</button>
+                <button type="submit" id="register_btn">Register</button>
             </div>
         </form>
         {% with messages = get_flashed_messages(with_categories=true) %}
@@ -70,6 +70,10 @@
           {% endif %}
         {% endwith %}
     </div>
+    <script>
+        const postDataUrl = "{{ url_for('login.addUser') }}";
+        const goToLogin = "{{ url_for('login.login') }}"
+    </script>
     <script src="{{ url_for('login.static', filename='js/script.js') }}"></script>
 </body>
 </html>

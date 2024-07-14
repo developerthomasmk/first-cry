@@ -1,4 +1,4 @@
-from flask import request, render_template, redirect, url_for, flash, jsonify
+from flask import request, render_template, session, redirect, url_for, flash, jsonify
 from app.login import bp
 from app.models import User as logindb
 from app import db
@@ -20,6 +20,7 @@ def login():
             if user_name == "" or password == "":
                 flash("Please fill in all fields.")
             elif password == singleUser.password:
+                session['user_id'] = singleUser.id
                 return redirect(url_for('home'))
             else:
                 flash("Invalid username or password.", "danger")
@@ -33,18 +34,24 @@ def login():
 @bp.route('/api/add_user', methods=['POST'])
 def addUser():
     if request.method == 'POST':
+        firstname = request.form['firstname']
+        lastname = request.form['lastname']
+        email = request.form['email']
+        mobile = request.form['mobile']
+        address_line1 = request.form['address_line1']
+        address_line2 = request.form['address_line2']
         user_name = request.form['username']
         password = request.form['password']
         conf_password = request.form['confirm_password']
         if password == conf_password:
-            record = logindb(username="ddsk", 
-                             password="dkas", 
-                             mobile="383478632", 
-                             email="dsdsj@shjjs.com", 
-                             firstname="ahjdsd", 
-                             lastname="jhcdhjs", 
-                             address_line1="avcvds", 
-                             address_line2="hcjsd", 
+            record = logindb(username=user_name, 
+                             password=password, 
+                             mobile=mobile, 
+                             email=email, 
+                             firstname=firstname, 
+                             lastname=lastname, 
+                             address_line1=address_line1, 
+                             address_line2=address_line2, 
                              is_admin=False
                              )
             

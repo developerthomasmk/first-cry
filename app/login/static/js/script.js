@@ -1,33 +1,37 @@
-function addUser() {
-    document.getElementById('register_btn').addEventListener('click', async function (event) {
-        event.preventDefault();
-        let username = document.getElementById('username').value;
-        let password = document.getElementById('password').value;
-        let cnf_password = document.getElementById('confirm_password').value;
+document.getElementById('register_btn').addEventListener('click', async function (event) {
+    event.preventDefault();
+    let firstname = document.getElementById('firstname').value;
+    let lastname = document.getElementById('lastname').value;
+    let email = document.getElementById('email').value;
+    let mobile = document.getElementById('mobile').value;
+    let address_line1 = document.getElementById('address_line1').value;
+    let address_line2 = document.getElementById('address_line2').value;
+    let username = document.getElementById('username').value;
+    let password = document.getElementById('password').value;
+    let cnf_password = document.getElementById('confirm_password').value;
 
-        try {
-            let response = await fetch("{{url_for(login.addUser)}}", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ username: username, password: password, confirm_password: cnf_password})
-            });
+    const formData = new FormData();
+    formData.append('firstname', firstname);
+    formData.append('lastname', lastname);
+    formData.append('email', email);
+    formData.append('mobile', mobile);
+    formData.append('address_line1', address_line1);
+    formData.append('address_line2', address_line2);
+    formData.append('username', username);
+    formData.append('password', password)
+    formData.append('confirm_password', cnf_password)
 
-            if (response.ok) {
-                let result = await response.json();
-                if (result.success) {
-                    // User added successfully, redirect to next page
-                    window.location.href = "{{ url_for('login.go_to_home') }}";
-                } else {
-                    alert('Failed to add user: ' + result.error);
-                }
-            } else {
-                alert('Failed to add user');
-            }
-        } catch (error) {
-            console.error('Error adding user:', error);
-        }
-    });
-}
+    fetch(postDataUrl, {
+        method: 'POST',
+        body: formData
 
+    })
+        .then(response => response.json())
+        .then(data => {
+            window.location.href = goToLogin;
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+});
