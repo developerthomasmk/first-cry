@@ -9,6 +9,13 @@ document.getElementById('register_btn').addEventListener('click', async function
     let username = document.getElementById('username').value;
     let password = document.getElementById('password').value;
     let cnf_password = document.getElementById('confirm_password').value;
+    let checkbox = document.getElementById('is_admin');
+    let is_admin = '0'
+    if (checkbox.checked) {
+        is_admin = '1'
+    } else {
+        is_admin = '0'
+    }
 
     const formData = new FormData();
     formData.append('firstname', firstname);
@@ -20,6 +27,7 @@ document.getElementById('register_btn').addEventListener('click', async function
     formData.append('username', username);
     formData.append('password', password)
     formData.append('confirm_password', cnf_password)
+    formData.append('is_admin', is_admin)
 
     fetch(postDataUrl, {
         method: 'POST',

@@ -50,6 +50,8 @@
 
   <script>
     const getDataUrl = "{{url_for('admin.getAllProducts')}}"
+    const updateStatuAcceptUrl = "{{url_for('admin.acceptProduct', product_id=0, status='PlaceHolder1', price=0)}}"
+    const updateStatuRejectUrl = "{{url_for('admin.rejectProduct', product_id=0, status='PlaceHolder1')}}"
     const productImageUrl = "{{ url_for('download_file', filename='') }}";
   </script>
   <script src="{{ url_for('admin.static', filename='js/script.js') }}"></script>

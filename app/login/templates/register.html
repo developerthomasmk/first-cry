@@ -57,6 +57,12 @@
                 <label for="confirm_password">Confirm Password</label>
                 <input type="password" id="confirm_password" name="confirm_password" required>
             </div>
+            <div class="input-group">
+                <label for="subscribe">
+                    <input type="checkbox" id="is_admin" name="is_admin" value="is_admin">
+                    IS ADMIN
+                </label>
+            </div>
             <button type="submit" id="register_btn">Register</button>
         </form>
         {% with messages = get_flashed_messages(with_categories=true) %}

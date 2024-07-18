@@ -24,4 +24,10 @@
     </div>
 </body>
 
+<script>
+    const getDataUrl = "{{url_for('history.getHistory')}}"
+    const productImageUrl = "{{ url_for('download_file', filename='') }}";
+  </script>
+  <script src="{{ url_for('history.static', filename='js/scripts.js') }}"></script>
+
 </html>

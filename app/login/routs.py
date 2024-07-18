@@ -16,7 +16,10 @@ def login():
                 flash("Please fill in all fields.")
             elif password == singleUser.password:
                 session['user_id'] = singleUser.id
-                return redirect(url_for('login.go_to_home'))
+                if singleUser.is_admin:
+                    return redirect(url_for('login.go_to_home'))
+                else:
+                    return redirect(url_for('login.go_to_admin_home'))
             
             else:
                 flash("Invalid username or password.", "danger")
@@ -34,6 +37,13 @@ def addUser():
         user_name = request.form['username']
         password = request.form['password']
         conf_password = request.form['confirm_password']
+        checkbox = request.form['is_admin']
+        is_admin = False
+        if checkbox == 1:
+            is_admin = True
+        else:
+            is_admin = False
+            
         if password == conf_password:
             record = logindb(username=user_name,
                             password=password,
@@ -43,7 +53,7 @@ def addUser():
                             lastname=lastname,
                             address_line1=address_line1,
                             address_line2=address_line2,
-                            is_admin=True
+                            is_admin=is_admin
                              )
             
             try:
@@ -63,3 +73,7 @@ def register():
 @bp.route('/home')
 def go_to_home():
     return redirect(url_for('home.index'))
+
+@bp.route('/admin')
+def go_to_admin_home():
+    return redirect(url_for('admin.adminHome'))

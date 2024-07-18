@@ -4,11 +4,15 @@ from app.models import Products as productDb
 from werkzeug.utils import secure_filename
 import os
 from app.models import Products as productdb
+from app.models import Category as categorydb
 from app import db
 
 # app = create_app()
 @bp.route('/', methods=['GET', 'POST'])
 def addProduct():
+    categories = db.session.query(categorydb).all()
+    db.session.commit()
+    print([category.to_dict() for category in categories])
     if request.method == 'POST':
         if 'user_id' in session:
             product_name = request.form['product-name']
@@ -31,7 +35,7 @@ def addProduct():
                                 status='inProgress',
                                 image=fileName,
                                 user_id=session['user_id'],
-                                category_id='1'
+                                category_id=category
                                 )
                 
             try:
@@ -49,7 +53,7 @@ def addProduct():
     else:
         flash('Please fill all the required fields and add at least one image.', 'error')
 
-    return render_template('add_request.html')
+    return render_template('add_request.html', items=categories)
 
 @bp.route('/home')
 def go_to_home():
