@@ -221,6 +221,16 @@ a:focus {
   margin-left: 25px;
 }
 
+.logout {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 25px;
+}
+
 .user_option a {
   margin-right: 25px;
   color: #000000;

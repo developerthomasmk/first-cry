@@ -2,6 +2,7 @@ import os
 from flask import Flask, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from datetime import timedelta
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -12,6 +13,7 @@ def create_app():
     app.config['UPLOAD_FOLDER'] = 'app/uploads/images'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(app.instance_path, 'app.db')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=1)
     # app.config.from_object('config.Config')
     
     db.init_app(app)

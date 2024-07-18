@@ -65,6 +65,7 @@ def addUser():
                 return jsonify({'success': False, 'error': str(e)}), 500
             finally:
                 db.session.close()
+            
 
 @bp.route('/register')
 def register():

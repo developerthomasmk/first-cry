@@ -5,7 +5,10 @@ from app.models import User as logindb
 
 @bp.route('/')
 def index():
-    return render_template('home.html')
+    if 'user_id' in session: 
+        return render_template('home.html')
+    else:
+        return redirect(url_for('login.login'))
 
 @bp.route('/has_session')
 def hasSession():
@@ -46,6 +49,11 @@ def getAdminProducts():
     
 @bp.route('/login')
 def go_to_login():
+    return redirect(url_for('login.login'))
+
+@bp.route('/logout')
+def logout():
+    session.clear()
     return redirect(url_for('login.login'))
 
 @bp.route('/history')

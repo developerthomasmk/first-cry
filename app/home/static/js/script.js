@@ -66,7 +66,15 @@ async function checkSession() {
               <span>
                 Welcome ${data.username}
               </span>
-            </a>`;
+            </a>
+            <div>
+            <a href="${getLogoutUrl}">
+              <i class="fa fa-user" aria-hidden="true"></i>
+              <span>
+                logout
+              </span>
+            </a>
+          </div>`;
 
 
 
