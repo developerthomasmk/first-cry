@@ -5,12 +5,14 @@ from app import db
 
 @bp.route('/', methods=['GET', 'POST'])
 def login():
+    
     if request.method == 'POST':
         user_name = request.form['username']
         password = request.form['password']
         singleUser = logindb.query.filter_by(username=user_name).first()
         if singleUser is None:
             flash("No username associated found!!", "danger")
+            return render_template('login.html')
         else:          
             if not user_name or not password:
                 flash("Please fill in all fields.")

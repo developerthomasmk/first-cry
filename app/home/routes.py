@@ -2,6 +2,7 @@ from flask import request, redirect, session, url_for, render_template, jsonify,
 from app.home import bp
 from app.models import Products as productdb
 from app.models import User as logindb
+from app import db
 
 @bp.route('/')
 def index():
@@ -14,7 +15,7 @@ def index():
 def hasSession():
     if 'user_id' in session:
         user = logindb.query.filter_by(id=session['user_id']).first()
-        return jsonify({'has_data': True, 'username': user.firstname})
+        return jsonify({'has_data': True, 'username': user.firstname, 'userid': user.id})
     else:
         return jsonify({'has_data': False})
 
@@ -46,6 +47,24 @@ def getAdminProducts():
         return response
     else:
         return jsonify({'status':'failed', 'msg': 'No data found!'})
+    
+@bp.route('/delete_user/<int:user_id>', methods=['DELETE'])
+def delete_user(user_id):
+    print(user_id)
+    print(user_id)
+    print(user_id)
+    print(user_id)
+    print(user_id)
+    print(user_id)
+    print(user_id)
+    user = db.session.query(logindb).filter_by(id=user_id).first()
+    if user is None:
+        return 'User nor found!!!'
+
+    db.session.delete(user)
+    db.session.commit()
+    session.clear()
+    return redirect(url_for('login.login'))
     
 @bp.route('/login')
 def go_to_login():
